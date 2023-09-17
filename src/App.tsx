@@ -25,7 +25,7 @@ const App: React.FC = () => {
       <div className="App">
         <Layout style={{ height: '100vh' }}>
           <Header className='header'>
-            <Title className='header-title'>Inventory System</Title>
+            <Title className='header-title'>Product Inventory App</Title>
           </Header>
           <Content style={{ padding: '1em' }}>
             <Products />
