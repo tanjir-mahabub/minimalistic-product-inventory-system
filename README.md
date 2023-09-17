@@ -17,8 +17,8 @@ that our real application is built with:
 Please complete all of the following:
 
 1. List available products, their stock and prices
-1. Calculate total value of all products in the inventory
-1. Create a form to add new product to inventory
+2. Calculate total value of all products in the inventory
+3. Create a form to add new product to inventory
 
 ## Run the application
 
