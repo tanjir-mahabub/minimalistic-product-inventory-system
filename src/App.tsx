@@ -24,7 +24,7 @@ const App: React.FC = () => {
     <ApolloProvider client={client}>
       <div className="App">
         <Layout style={{ height: '100vh' }}>
-          <Header className='header'>
+          <Header className='header' style={{ padding: '40px 0' }}>
             <Title className='header-title'>Product Inventory App</Title>
           </Header>
           <Content style={{ padding: '1em' }}>

@@ -1,9 +1,8 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import { Typography } from 'antd';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders project title', () => {
+  render(<Typography.Title>Product Inventory App</Typography.Title>);
+  const titleElement = screen.getByText(/Product Inventory App/i);
+  expect(titleElement).toBeInTheDocument();
 });
