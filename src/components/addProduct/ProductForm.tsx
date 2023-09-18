@@ -42,6 +42,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ onCancel }) => {
                 refetchQueries: [{ query: GET_PRODUCT_LIST }, { query: TOTAL_PRICE }, { query: COUNT_PRODUCTS }]
             });
             console.log('product added: ', data);
+
             form.resetFields();
 
             onCancel();
@@ -49,7 +50,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ onCancel }) => {
 
         } catch (err) {
             openNotification('error')
-            // console.error('Error adding product:', err);
+            // console.error('Error adding product:', err);            
         }
     };
 
@@ -67,8 +68,13 @@ const ProductForm: React.FC<ProductFormProps> = ({ onCancel }) => {
                 <Row align={'middle'} style={{ padding: '0px 0px' }}>
                     <Col>
                         <div>
-                            {loading && <p style={{ color: 'yellow' }}>Data processing...</p>}
-                            {error && <p style={{ color: 'red' }}>This product already exists. Please try to add different product name.</p>}
+                            {loading ? <p style={{ color: 'orange' }}>Data processing...</p> :
+                                error && (
+                                    (error?.message.includes("products_name_key")) ?
+                                        (<p style={{ color: 'red' }}>This product is already exists. Please try to add different product name.</p>) :
+                                        (<p style={{ color: 'red' }}>Submission failed due to a network issue. Please try again later.</p>)
+                                )
+                            }
                         </div>
                     </Col>
                 </Row>
