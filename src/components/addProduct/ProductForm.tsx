@@ -87,9 +87,12 @@ const ProductForm: React.FC<ProductFormProps> = ({ onCancel }) => {
                             label="Product Name"
                             name="name"
                             style={{ fontSize: '14px', fontWeight: 'bold' }}
-                            rules={[{ required: true, message: 'Please enter the product name' }]}
+                            rules={[
+                                { required: true, message: 'Please enter the product name' },
+                                { min: 0, max: 69, type: 'string', message: 'Please enter a description within 70 characters' }
+                            ]}
                         >
-                            <Input placeholder="Product Name" style={{ width: '100%' }} />
+                            <Input placeholder="Product Name" maxLength={70} style={{ width: '100%' }} />
                         </Form.Item>
                     </Col>
                 </Row>
@@ -103,9 +106,12 @@ const ProductForm: React.FC<ProductFormProps> = ({ onCancel }) => {
                             label="Product Description"
                             name="description"
                             style={{ fontSize: '14px', fontWeight: 'bold' }}
-                            rules={[{ required: true, message: 'Please enter the product description' }]}
+                            rules={[
+                                { required: true, message: 'Please enter the product description' },
+                                { min: 0, max: 249, type: 'string', message: 'Please enter a description within 250 characters' }
+                            ]}
                         >
-                            <Input.TextArea placeholder="Write a short product description" style={{ width: '100%' }} />
+                            <Input.TextArea placeholder="Write a short product description" maxLength={250} style={{ width: '100%' }} />
                         </Form.Item>
                     </Col>
                 </Row>
@@ -121,10 +127,11 @@ const ProductForm: React.FC<ProductFormProps> = ({ onCancel }) => {
                             name="stock"
                             style={{ fontSize: '14px', fontWeight: 'bold' }}
                             rules={[
-                                { type: 'number', required: true, message: 'Please enter the stock quantity' }
+                                { type: 'number', required: true, message: 'Please enter the stock quantity' },
+                                { min: 0, max: 999999999, type: 'number', message: 'Please enter a valid stock number' }
                             ]}
                         >
-                            <InputNumber min={0} placeholder="Stock" style={{ width: '100%' }} />
+                            <InputNumber min={0} maxLength={10} placeholder="Stock" style={{ width: '100%' }} />
                         </Form.Item>
                     </Col>
 
@@ -137,9 +144,12 @@ const ProductForm: React.FC<ProductFormProps> = ({ onCancel }) => {
                             label="Price"
                             name="price"
                             style={{ fontSize: '14px', fontWeight: 'bold' }}
-                            rules={[{ required: true, message: 'Please enter the product price' }]}
+                            rules={[
+                                { required: true, message: 'Please enter the product price' },
+                                { min: 0, max: 9999999999, type: 'number', message: 'Please enter a valid product price' }
+                            ]}
                         >
-                            <InputNumber min={0} placeholder="Price" style={{ width: '100%' }} />
+                            <InputNumber min={0} maxLength={11} placeholder="Price" style={{ width: '100%' }} />
                         </Form.Item>
                     </Col>
                 </Row>
