@@ -7,10 +7,17 @@ import { Products } from './components/Products';
 const { Header, Content } = Layout;
 const { Title } = Typography;
 
-const createApolloClient = () => {
+const graphqlURI = process.env.REACT_APP_GRAPHQL_URI;
+const authToken = process.env.REACT_APP_SECRET_KEY;
+
+const createApolloClient = (authToken: string | undefined) => {
   return new ApolloClient({
     link: new HttpLink({
-      uri: process.env.REACT_APP_GRAPHQL_URI,
+      uri: graphqlURI,
+      headers: {
+        "content-type": "application/json",
+        "x-hasura-admin-secret": `${authToken}`
+      }
     }),
     cache: new InMemoryCache(),
   });
@@ -18,7 +25,7 @@ const createApolloClient = () => {
 
 const App: React.FC = () => {
 
-  const [client] = useState(createApolloClient());
+  const [client] = useState(createApolloClient(authToken));
 
   return (
     <ApolloProvider client={client}>
