@@ -10,7 +10,7 @@ const { Title } = Typography;
 const createApolloClient = () => {
   return new ApolloClient({
     link: new HttpLink({
-      uri: 'http://localhost:8080/v1/graphql',
+      uri: process.env.REACT_APP_GRAPHQL_URI,
     }),
     cache: new InMemoryCache(),
   });
